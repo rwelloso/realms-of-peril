@@ -10,4 +10,4 @@ This system does not include the text of the books.
 
 Author: daddy_bot · Contact: daddy_bot@arandu.games
 
-License: see LICENSE (all rights reserved).
+License: proprietary, all rights reserved (see LICENSE). You can install and play with it. To use, modify or continue this project in any other way, ask for authorization: daddy_bot@arandu.games
