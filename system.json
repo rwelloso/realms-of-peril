@@ -4,6 +4,9 @@
   "description": "Unofficial Foundry VTT system for Realms of Peril.",
   "authors": [ { "name": "daddy_bot", "email": "daddy_bot@arandu.games" } ],
   "version": "0.1.0",
+  "url": "https://github.com/rwelloso/realms-of-peril",
+  "manifest": "https://github.com/rwelloso/realms-of-peril/releases/latest/download/system.json",
+  "download": "https://github.com/rwelloso/realms-of-peril/releases/download/v0.1.0/rop.zip",
   "compatibility": {
     "minimum": "14.367",
     "verified": "14"
