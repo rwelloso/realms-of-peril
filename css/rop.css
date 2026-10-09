@@ -1,86 +1,75 @@
-.rop-pc-sheet,
-.rop-follower-sheet,
-.rop-monster-sheet,
-.rop-item-sheet {
+/* Generic layout still used by the Follower, Monster and item sheets until they are redesigned. */
+
+.rop .rop-follower-sheet,
+.rop .rop-monster-sheet,
+.rop .rop-item-sheet {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
   padding: 0.5rem;
 }
 
-.rop-pc-sheet .sheet-header,
-.rop-follower-sheet .sheet-header,
-.rop-monster-sheet .sheet-header,
-.rop-item-sheet .sheet-header {
+.rop .rop-follower-sheet .sheet-header,
+.rop .rop-monster-sheet .sheet-header,
+.rop .rop-item-sheet .sheet-header {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-.rop-pc-sheet .profile-img,
-.rop-follower-sheet .profile-img,
-.rop-monster-sheet .profile-img,
-.rop-item-sheet .profile-img {
+.rop .rop-follower-sheet .profile-img,
+.rop .rop-monster-sheet .profile-img,
+.rop .rop-item-sheet .profile-img {
   width: 48px;
   height: 48px;
   object-fit: cover;
   border-radius: 4px;
 }
 
-.rop-pc-sheet .actor-name,
-.rop-follower-sheet .actor-name,
-.rop-monster-sheet .actor-name,
-.rop-item-sheet .item-name {
+.rop .rop-follower-sheet .actor-name,
+.rop .rop-monster-sheet .actor-name,
+.rop .rop-item-sheet .item-name {
   flex: 1;
   font-size: 1.25rem;
 }
 
-.rop-pc-sheet .abilities,
-.rop-pc-sheet .stats,
-.rop-follower-sheet .stats,
-.rop-monster-sheet .stats {
+.rop .rop-follower-sheet .stats,
+.rop .rop-monster-sheet .stats {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
 }
 
-.rop-pc-sheet .ability,
-.rop-pc-sheet .stat,
-.rop-follower-sheet .form-group,
-.rop-monster-sheet .form-group,
-.rop-item-sheet .form-group {
+.rop .rop-follower-sheet .form-group,
+.rop .rop-monster-sheet .form-group,
+.rop .rop-item-sheet .form-group {
   display: flex;
   flex-direction: column;
   min-width: 90px;
 }
 
-.rop-pc-sheet .kin-background {
-  display: flex;
-  gap: 0.75rem;
-}
-
-.checkbox-list {
+.rop .checkbox-list {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
 }
 
-.rop-inventory .inventory-group header,
-.rop-monster-sheet .attacks header {
+.rop .rop-inventory .inventory-group header,
+.rop .rop-monster-sheet .attacks header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.rop-inventory ul,
-.rop-monster-sheet .attacks ul {
+.rop .rop-inventory ul,
+.rop .rop-monster-sheet .attacks ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.rop-inventory li,
-.rop-monster-sheet .attacks li {
+.rop .rop-inventory li,
+.rop .rop-monster-sheet .attacks li {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -88,7 +77,7 @@
   padding: 0.15rem 0;
 }
 
-.rop-conditions .condition-list {
+.rop .rop-conditions .condition-list {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -97,12 +86,12 @@
   gap: 0.5rem 1rem;
 }
 
-.rop-conditions li {
+.rop .rop-conditions li {
   display: flex;
   align-items: center;
   gap: 0.35rem;
 }
 
-.condition-rating {
+.rop .condition-rating {
   width: 3rem;
 }

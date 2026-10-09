@@ -29,6 +29,7 @@ Hooks.once("init", function() {
   foundry.applications.handlebars.loadTemplates([
     "systems/rop/templates/actor/parts/conditions.hbs",
     "systems/rop/templates/actor/parts/inventory.hbs",
+    "systems/rop/templates/actor/pc/item-row.hbs",
     "systems/rop/templates/item/parts/carried-item.hbs"
   ]);
 });

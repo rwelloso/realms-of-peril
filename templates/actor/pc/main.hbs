@@ -1,0 +1,43 @@
+<section class="tab rop-main {{tab.cssClass}}" data-tab="main" data-group="primary">
+  <div class="rop-main-body">
+    <section class="rop-list">
+      <h2 class="rop-title">{{localize "ROP.SHEET.Equipment"}}</h2>
+      <div class="rop-list-head">
+        <h3 class="rop-lbl">{{localize "ROP.SHEET.Carried"}}</h3>
+        <span class="rop-list-note">{{equipment.length}}</span>
+      </div>
+      {{#each equipment as |row|}}
+      {{> "systems/rop/templates/actor/pc/item-row.hbs" row=row}}
+      {{else}}
+      <div class="rop-list-empty">{{localize "ROP.SHEET.NothingCarried"}}</div>
+      {{/each}}
+      <select class="rop-inp rop-add" data-add-item aria-label="{{localize "ROP.SHEET.AddItem"}}">
+        <option value="">{{localize "ROP.SHEET.AddItem"}}</option>
+        {{#each equipmentTypes as |type|}}
+        <option value="{{type.id}}">{{type.label}}</option>
+        {{/each}}
+      </select>
+    </section>
+
+    {{!-- Provisional: Class, Kin, Background, Talent and Power move to the Talents and Spells tabs. --}}
+    <section class="rop-list">
+      <h2 class="rop-title">{{localize "ROP.SHEET.Features"}}</h2>
+      <p class="rop-provisional">{{localize "ROP.SHEET.FeaturesProvisional"}}</p>
+      <div class="rop-list-head">
+        <h3 class="rop-lbl">{{localize "ROP.SHEET.Features"}}</h3>
+        <span class="rop-list-note">{{features.length}}</span>
+      </div>
+      {{#each features as |row|}}
+      {{> "systems/rop/templates/actor/pc/item-row.hbs" row=row}}
+      {{else}}
+      <div class="rop-list-empty">{{localize "ROP.SHEET.NoFeatures"}}</div>
+      {{/each}}
+      <select class="rop-inp rop-add" data-add-item aria-label="{{localize "ROP.SHEET.AddFeature"}}">
+        <option value="">{{localize "ROP.SHEET.AddFeature"}}</option>
+        {{#each featureTypes as |type|}}
+        <option value="{{type.id}}">{{type.label}}</option>
+        {{/each}}
+      </select>
+    </section>
+  </div>
+</section>

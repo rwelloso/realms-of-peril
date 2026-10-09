@@ -1,0 +1,44 @@
+<aside class="rop-side">
+  <div class="rop-sidew">
+    <section>
+      <h2 class="rop-title">{{localize "ROP.PC.FIELDS.abilities.label"}}</h2>
+      <div class="rop-abg">
+        {{#each abilities as |ability|}}
+        <div class="rop-abrow">
+          <span class="rop-abil">{{localize ability.label}}</span>
+          <input class="rop-inp rop-abv" type="number" min="-3" max="6" name="system.abilities.{{ability.key}}.value"
+                 value="{{ability.score}}" aria-label="{{localize ability.label}}" />
+          <label class="rop-fail">
+            <input type="checkbox" name="system.abilities.{{ability.key}}.fail" {{checked ability.fail}}
+                   aria-label="{{localize "ROP.PC.FIELDS.abilities.fail.label"}}" />
+            <span>{{localize "ROP.SHEET.Fail"}}</span>
+          </label>
+        </div>
+        {{/each}}
+      </div>
+    </section>
+
+    <section>
+      <h2 class="rop-title">{{localize "ROP.Conditions"}}</h2>
+      {{#each activeConditions as |condition|}}
+      <div class="rop-cdr" data-condition-id="{{condition.id}}">
+        <span class="rop-cdr-name">{{localize condition.label}}</span>
+        {{#if condition.hasRating}}
+        <input class="rop-inp rop-cdv" type="number" min="1" max="3" data-condition-rating value="{{condition.level}}"
+               aria-label="{{localize "ROP.CONDITION.FIELDS.level.label"}}" />
+        {{/if}}
+        <button type="button" class="rop-btn rop-btn-bare" data-action="removeCondition"
+                aria-label="{{localize "ROP.SHEET.Remove"}}">
+          <img src="systems/rop/icons/ui/remove.svg" alt="" width="13" height="13" />
+        </button>
+      </div>
+      {{/each}}
+      <select class="rop-inp rop-add" data-add-condition aria-label="{{localize "ROP.SHEET.AddCondition"}}">
+        <option value="">{{localize "ROP.SHEET.AddCondition"}}</option>
+        {{#each availableConditions as |condition|}}
+        <option value="{{condition.id}}">{{localize condition.label}}</option>
+        {{/each}}
+      </select>
+    </section>
+  </div>
+</aside>

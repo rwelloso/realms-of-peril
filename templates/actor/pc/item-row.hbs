@@ -1,0 +1,19 @@
+<div class="rop-irow" data-item-id="{{row.id}}">
+  <button type="button" class="rop-ico-btn" data-action="editItem" aria-label="{{row.name}}">
+    <span class="rop-ico" title="{{row.typeLabel}}">{{row.initial}}</span>
+  </button>
+  <div class="rop-iname">
+    <button type="button" class="rop-iname-btn" data-action="editItem">{{row.name}}</button>
+    <span class="rop-imeta">{{row.meta}}</span>
+  </div>
+  <div class="rop-iact">
+    {{#if row.weightIcon}}
+    <span class="rop-weight" role="img" aria-label="{{row.weightLabel}}">
+      <img src="{{row.weightIcon}}" alt="" width="22" height="22" />
+    </span>
+    {{/if}}
+    <button type="button" class="rop-btn rop-btn-icon" data-action="deleteItem" aria-label="{{localize "ROP.SHEET.Delete"}}">
+      <img src="systems/rop/icons/ui/trash.svg" alt="" width="20" height="20" />
+    </button>
+  </div>
+</div>

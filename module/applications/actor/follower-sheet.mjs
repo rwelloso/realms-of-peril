@@ -10,7 +10,7 @@ const TextEditor = foundry.applications.ux.TextEditor.implementation;
 export default class FollowerSheet extends BaseActorSheet {
   /** @override */
   static DEFAULT_OPTIONS = {
-    classes: ["follower"],
+    classes: ["rop", "actor", "follower"],
     position: { width: 480, height: 520 }
   };
 

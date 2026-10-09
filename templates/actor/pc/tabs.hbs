@@ -1,0 +1,6 @@
+<nav class="tabs rop-nav" data-group="primary" aria-label="{{localize "ROP.SHEET.Sections"}}">
+  {{#each tabs as |tab|}}
+  <a class="rop-otab {{tab.cssClass}}" data-action="tab" data-group="{{tab.group}}" data-tab="{{tab.id}}"
+     role="tab" aria-selected="{{tab.active}}">{{localize tab.label}}</a>
+  {{/each}}
+</nav>

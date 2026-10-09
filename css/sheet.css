@@ -1,0 +1,270 @@
+/* Shared building blocks of the redesigned sheets. Every selector starts at .rop so nothing
+   leaks into the rest of Foundry; form controls use .application.rop to win over core styles. */
+
+.rop .rop-h {
+  font-family: var(--rop-font-head);
+  font-weight: 400;
+  letter-spacing: .01em;
+}
+
+.rop .rop-lbl {
+  font-family: var(--rop-font-body);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--rop-ink-2);
+  line-height: 1.3;
+}
+
+.rop .rop-field {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  margin: 0;
+}
+
+.rop .rop-field > .rop-lbl {
+  align-self: flex-start;
+}
+
+/* Text box the player types in. */
+.application.rop .rop-inp {
+  font-family: inherit;
+  font-size: 15px;
+  color: var(--rop-ink);
+  background: var(--rop-input-bg);
+  border: 1px solid var(--rop-input-bd);
+  border-radius: 6px;
+  padding: 5px 8px;
+  box-sizing: border-box;
+  height: auto;
+  min-height: 0;
+  box-shadow: none;
+  outline: none;
+}
+
+.application.rop .rop-inp.rop-h {
+  font-family: var(--rop-font-head);
+}
+
+.application.rop select.rop-inp {
+  padding-right: 4px;
+}
+
+.application.rop .rop-inp:focus,
+.application.rop .rop-btn:focus-visible {
+  outline: 2px solid var(--rop-focus);
+  outline-offset: 1px;
+  box-shadow: none;
+}
+
+/* Numbers always centered, without the browser spin arrows. */
+.application.rop input[type="number"].rop-inp {
+  text-align: center;
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+.application.rop input[type="number"].rop-inp::-webkit-inner-spin-button,
+.application.rop input[type="number"].rop-inp::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.rop output {
+  text-align: center;
+}
+
+/* Calculated value: not editable. */
+.rop .rop-auto {
+  background: var(--rop-auto-bg);
+  border: 1px dashed var(--rop-auto-bd);
+  border-radius: 6px;
+  color: var(--rop-auto-ink);
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.application.rop .rop-btn {
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.2;
+  border-radius: 6px;
+  cursor: pointer;
+  min-height: 34px;
+  height: auto;
+  padding: 4px 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  white-space: nowrap;
+  box-shadow: none;
+  border: 1px solid var(--rop-btn-bd);
+  background: var(--rop-input-bg);
+  color: var(--rop-ink);
+}
+.application.rop .rop-btn:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+}
+.application.rop .rop-btn-icon {
+  width: 36px;
+  min-width: 36px;
+  padding: 0;
+}
+.application.rop .rop-btn-bare {
+  border: none;
+  background: transparent;
+  color: var(--rop-ink-2);
+  min-height: 28px;
+  width: 26px;
+  min-width: 26px;
+  padding: 0;
+}
+.rop .rop-btn img,
+.rop .rop-weight img {
+  display: block;
+  border: none;
+}
+
+/* Section titles. */
+.rop .rop-title {
+  margin: 0;
+  padding: 0;
+  border: none;
+  font-family: var(--rop-font-head);
+  font-weight: 400;
+  font-size: 21px;
+  color: var(--rop-ink);
+  align-self: flex-start;
+}
+
+/* List of items: icon 32 px, name (min 110 px), actions; rows at least 44 px high. */
+.rop .rop-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.rop .rop-list-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 10px 8px 3px;
+  border-bottom: 2px solid var(--rop-ink);
+}
+.rop .rop-list-head h3 {
+  margin: 0;
+  padding: 0;
+  border: none;
+  color: var(--rop-ink);
+}
+.rop .rop-list-note {
+  font-size: 13px;
+  color: var(--rop-ink-2);
+}
+.rop .rop-list-empty {
+  padding: 8px;
+  font-size: 14px;
+  color: var(--rop-ink-2);
+}
+
+.rop .rop-irow {
+  display: grid;
+  grid-template-columns: 32px minmax(110px, 1fr) minmax(0, auto);
+  align-items: center;
+  gap: 6px 10px;
+  padding: 4px 8px;
+  min-height: 44px;
+  box-sizing: border-box;
+  border-bottom: 1px solid var(--rop-line);
+}
+
+.rop .rop-iname {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.application.rop .rop-iname-btn {
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--rop-ink);
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  min-height: 0;
+  height: auto;
+  line-height: 1.3;
+  text-align: left;
+  align-self: flex-start;
+  cursor: pointer;
+  box-shadow: none;
+}
+.application.rop .rop-iname-btn:hover {
+  color: var(--rop-accent);
+}
+
+.rop .rop-imeta {
+  font-size: 12px;
+  color: var(--rop-ink-2);
+  align-self: flex-start;
+}
+
+.rop .rop-iact {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+.rop .rop-weight {
+  width: 30px;
+  height: 34px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Temporary item-type marker until the system has its own type icons: a dark square with
+   the initial of the type. */
+.application.rop .rop-ico-btn {
+  width: 32px;
+  height: 32px;
+  min-height: 0;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: none;
+}
+.rop .rop-ico {
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  background: var(--rop-ink);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--rop-font-body);
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 1;
+}
+
+/* "+ Item" and "+ Add condition" are selects styled as plain buttons. */
+.application.rop select.rop-add {
+  font-weight: 700;
+  font-size: 14px;
+  min-height: 34px;
+  align-self: flex-start;
+  cursor: pointer;
+}

@@ -17,7 +17,8 @@ export default class BaseActorSheet extends HandlebarsApplicationMixin(ActorShee
       createItem: BaseActorSheet.#createItem,
       deleteItem: BaseActorSheet.#deleteItem,
       editItem: BaseActorSheet.#editItem,
-      toggleCondition: BaseActorSheet.#toggleCondition
+      toggleCondition: BaseActorSheet.#toggleCondition,
+      removeCondition: BaseActorSheet.#removeCondition
     }
   };
 
@@ -69,6 +70,32 @@ export default class BaseActorSheet extends HandlebarsApplicationMixin(ActorShee
     this.element.querySelectorAll("[data-condition-rating]").forEach(input => {
       input.addEventListener("change", this.#onChangeConditionRating.bind(this));
     });
+    // "+ Add condition" and "+ Item" are selects: picking an option acts, then the select resets.
+    this.element.querySelectorAll("[data-add-condition]").forEach(select => {
+      select.addEventListener("change", this.#onAddCondition.bind(this));
+    });
+    this.element.querySelectorAll("[data-add-item]").forEach(select => {
+      select.addEventListener("change", this.#onAddItem.bind(this));
+    });
+  }
+
+  async #onAddCondition(event) {
+    event.stopPropagation();
+    const id = event.target.value;
+    event.target.value = "";
+    if ( id ) await this.actor.toggleStatusEffect(id, { active: true });
+  }
+
+  async #onAddItem(event) {
+    event.stopPropagation();
+    const type = event.target.value;
+    event.target.value = "";
+    if ( type ) await this.#createItemOfType(type);
+  }
+
+  async #createItemOfType(type) {
+    const name = game.i18n.format("ROP.SHEET.NewItem", { type: game.i18n.localize(`TYPES.Item.${type}`) });
+    await Item.implementation.create({ name, type }, { parent: this.actor });
   }
 
   async #onChangeConditionRating(event) {
@@ -78,9 +105,7 @@ export default class BaseActorSheet extends HandlebarsApplicationMixin(ActorShee
   }
 
   static async #createItem(event, target) {
-    const type = target.dataset.type;
-    const name = game.i18n.format("ROP.SHEET.NewItem", { type: game.i18n.localize(`TYPES.Item.${type}`) });
-    await Item.implementation.create({ name, type }, { parent: this.actor });
+    await this.#createItemOfType(target.dataset.type);
   }
 
   static async #deleteItem(event, target) {
@@ -96,5 +121,10 @@ export default class BaseActorSheet extends HandlebarsApplicationMixin(ActorShee
   static async #toggleCondition(event, target) {
     const id = target.closest("[data-condition-id]")?.dataset.conditionId;
     await this.actor.toggleStatusEffect(id, { active: target.checked });
+  }
+
+  static async #removeCondition(event, target) {
+    const id = target.closest("[data-condition-id]")?.dataset.conditionId;
+    if ( id ) await this.actor.toggleStatusEffect(id, { active: false });
   }
 }

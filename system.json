@@ -3,10 +3,10 @@
   "title": "Realms of Peril",
   "description": "Unofficial Foundry VTT system for Realms of Peril.",
   "authors": [ { "name": "daddy_bot", "email": "daddy_bot@arandu.games" } ],
-  "version": "0.1.0",
+  "version": "0.2.0",
   "url": "https://github.com/rwelloso/realms-of-peril",
   "manifest": "https://github.com/rwelloso/realms-of-peril/releases/latest/download/system.json",
-  "download": "https://github.com/rwelloso/realms-of-peril/releases/download/v0.1.0/rop.zip",
+  "download": "https://github.com/rwelloso/realms-of-peril/releases/download/v0.2.0/rop.zip",
   "compatibility": {
     "minimum": "14.367",
     "verified": "14"
@@ -15,7 +15,7 @@
   "languages": [
     { "lang": "en", "name": "English", "path": "lang/en.json" }
   ],
-  "styles": ["css/rop.css"],
+  "styles": ["css/tokens.css", "css/sheet.css", "css/pc.css", "css/rop.css"],
   "documentTypes": {
     "ActiveEffect": {
       "condition": {}

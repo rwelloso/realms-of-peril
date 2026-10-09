@@ -1,0 +1,451 @@
+/* Player character sheet. The window width drives the layout (container query on the
+   application element): 821 px and up full layout, 601-820 px narrower left column,
+   600 px and below a single column with the tabs on top. */
+
+.application.rop.pc {
+  container: rop-pc / inline-size;
+  overflow: visible;
+  min-width: 360px;
+  font-family: var(--rop-font-body);
+  color: var(--rop-ink);
+}
+
+/* Window title bar. */
+.application.rop.pc .window-header {
+  background: var(--rop-bar);
+  color: var(--rop-bar-ink);
+  border: none;
+}
+.application.rop.pc .window-header .window-title {
+  font-family: var(--rop-font-head);
+  font-size: 17px;
+  color: var(--rop-bar-ink);
+}
+.application.rop.pc .window-header .header-control {
+  color: var(--rop-bar-ink);
+}
+
+/* Body grid: portrait | identity on top, side column | tab content below. The tab content
+   and the side column scroll on their own, so the window content itself must not clip:
+   the vertical tabs sit outside its right edge. */
+.application.rop.pc .window-content {
+  position: relative;
+  overflow: visible;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  grid-template-rows: auto minmax(0, 1fr);
+  grid-template-areas: "port ident" "side main";
+  gap: 14px 20px;
+  padding: 16px;
+  box-sizing: border-box;
+  background: var(--rop-bg);
+  color: var(--rop-ink);
+  font-family: var(--rop-font-body);
+  font-size: 15px;
+}
+
+/* Portrait: dark frame with a gold border and an inner line, as tall as the identity block. */
+.rop.pc .rop-port {
+  grid-area: port;
+  min-height: 200px;
+  border: 1px solid var(--rop-gold);
+  border-radius: 4px;
+  background: var(--rop-port);
+  box-shadow: inset 0 0 0 3px var(--rop-port), inset 0 0 0 4px var(--rop-port-line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 4px;
+  box-sizing: border-box;
+}
+.rop.pc .rop-port img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: none;
+  border-radius: 2px;
+}
+.rop.pc .rop-port img[data-action] {
+  cursor: pointer;
+}
+
+/* Identity block. */
+.rop.pc .rop-ident {
+  grid-area: ident;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+.rop.pc .rop-hn {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 12px;
+  align-items: flex-end;
+}
+.rop.pc .rop-hname {
+  flex: 1 1 220px;
+}
+.application.rop.pc .rop-hname .rop-inp {
+  font-size: 26px;
+  padding: 2px 10px;
+}
+.rop.pc .rop-level {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3px 16px;
+}
+.rop.pc .rop-level .rop-lbl {
+  color: var(--rop-auto-ink);
+}
+.rop.pc .rop-level output {
+  font-size: 26px;
+  line-height: 1.1;
+}
+.rop.pc .rop-xp {
+  width: 88px;
+}
+.application.rop.pc .rop-xp .rop-inp {
+  font-size: 20px;
+  font-weight: 800;
+  padding: 4px;
+}
+.rop.pc .rop-hi {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+}
+.rop.pc .rop-ranks {
+  padding: 6px 10px;
+  font-weight: 700;
+  font-size: 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* HP, AR and Heavy blocks: sized to their content, centered on the last line. */
+.rop.pc .rop-hv {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 12px;
+  align-items: stretch;
+  justify-content: center;
+}
+.rop.pc .rop-vb {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  border: 1px solid var(--rop-card-bd);
+  border-radius: 8px;
+  background: var(--rop-input-bg);
+}
+.rop.pc .rop-vb.rop-vb-hp {
+  border: 1.5px solid var(--rop-hp);
+}
+.rop.pc .rop-vb.rop-vb-ar {
+  border: 1.5px solid var(--rop-ar);
+}
+.rop.pc .rop-vb > .rop-h {
+  font-size: 19px;
+  white-space: nowrap;
+}
+.application.rop.pc .rop-hp-cur {
+  width: 50px;
+  padding: 1px 2px;
+  font-size: 22px;
+  color: var(--rop-accent);
+}
+.rop.pc .rop-slash {
+  font-size: 18px;
+  color: var(--rop-ink-2);
+}
+.rop.pc .rop-vb output.rop-auto {
+  font-size: 18px;
+  font-weight: 800;
+  padding: 2px 10px;
+  min-width: 24px;
+}
+
+/* Side column: Abilities and Conditions. */
+.rop.pc .rop-side {
+  grid-area: side;
+  min-height: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.rop.pc .rop-sidew {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-self: flex-start;
+  width: max-content;
+  max-width: 100%;
+}
+.rop.pc .rop-sidew > section {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.rop.pc .rop-side .rop-title {
+  font-size: 19px;
+  margin-bottom: 2px;
+}
+
+.rop.pc .rop-abg {
+  display: grid;
+  grid-template-columns: minmax(max-content, 1fr) 50px auto;
+  column-gap: 8px;
+  row-gap: 4px;
+}
+.rop.pc .rop-abrow {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: subgrid;
+  align-items: center;
+  padding: 2px 6px 2px 2px;
+  background: var(--rop-input-bg);
+  border: 1px solid var(--rop-card-bd);
+  border-radius: 6px;
+}
+.rop.pc .rop-abil {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 4px 10px 4px 8px;
+  min-height: 34px;
+  font-family: var(--rop-font-head);
+  font-size: 19px;
+  white-space: nowrap;
+  color: var(--rop-accent);
+}
+.application.rop.pc .rop-abv {
+  width: 50px;
+  padding: 2px;
+  font-size: 19px;
+  font-weight: 800;
+}
+.rop.pc .rop-fail {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  margin: 0;
+}
+.application.rop.pc .rop-fail input {
+  width: 17px;
+  height: 17px;
+  margin: 0;
+  accent-color: var(--rop-accent);
+}
+.rop.pc .rop-fail span {
+  font-size: 9px;
+  font-weight: 800;
+  color: var(--rop-ink-2);
+}
+
+.rop.pc .rop-cdr {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 32px;
+  box-sizing: border-box;
+  padding: 2px 2px 2px 10px;
+  border-radius: 6px;
+  background: var(--rop-input-bg);
+  border: 1px solid var(--rop-card-bd);
+}
+.rop.pc .rop-cdr-name {
+  flex-grow: 1;
+  font-weight: 700;
+  font-size: 14px;
+}
+.application.rop.pc .rop-cdv {
+  width: 42px;
+  padding: 1px 2px;
+  font-size: 14px;
+  font-weight: 800;
+}
+.application.rop.pc .rop-side select.rop-add {
+  font-size: 14px;
+  align-self: stretch;
+}
+
+/* Tab content. */
+.rop.pc .rop-main {
+  grid-area: main;
+  min-width: 0;
+  min-height: 0;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+.rop.pc .rop-main-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.rop.pc .rop-main-body > section {
+  display: flex;
+  flex-direction: column;
+}
+.rop.pc .rop-main-body select.rop-add {
+  margin-top: 10px;
+}
+.rop.pc .rop-provisional {
+  font-size: 12px;
+  color: var(--rop-ink-2);
+  margin: 2px 0 0;
+}
+
+/* Vertical tabs outside the right edge, like the tabs of a binder. */
+.application.rop.pc nav.rop-nav {
+  position: absolute;
+  left: 100%;
+  top: 150px;
+  margin: 0 0 0 -3px;
+  padding: 0;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  z-index: -1;
+}
+.application.rop.pc nav.rop-nav .rop-otab {
+  writing-mode: vertical-rl;
+  position: relative;
+  width: 26px;
+  padding: 14px 2px 14px 3px;
+  margin-top: -5px;
+  border: none;
+  border-left: 1px solid rgba(0, 0, 0, .15);
+  border-radius: 0 13px 4px 0 / 0 40px 4px 0;
+  box-shadow: 0 0 6px 1px rgba(43, 37, 34, .55);
+  background: var(--rop-tab);
+  color: var(--rop-ink);
+  font-family: var(--rop-font-body);
+  font-size: 13px;
+  line-height: 16px;
+  letter-spacing: .03em;
+  font-weight: 500;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  filter: brightness(.9);
+  box-sizing: content-box;
+}
+.application.rop.pc nav.rop-nav .rop-otab.active {
+  z-index: 1;
+  font-weight: 800;
+  filter: none;
+  margin-left: -1px;
+}
+.application.rop.pc nav.rop-nav .rop-otab:focus-visible {
+  outline: 2px solid var(--rop-focus);
+  outline-offset: 1px;
+}
+
+/* 601-820 px: narrower left column. */
+@container rop-pc (max-width: 820px) {
+  .application.rop.pc .window-content {
+    gap: 14px 16px;
+  }
+}
+
+/* 600 px and below: one column, the whole sheet scrolls, tabs on top. */
+@container rop-pc (max-width: 600px) {
+  .application.rop.pc .window-content {
+    overflow-y: auto;
+    grid-template-columns: 96px minmax(0, 1fr);
+    grid-template-rows: none;
+    grid-template-areas:
+      "nav nav"
+      "port hn"
+      "hi hi"
+      "hv hv"
+      "side side"
+      "main main";
+    gap: 12px;
+    padding: 12px;
+  }
+  .rop.pc .rop-ident {
+    display: contents;
+  }
+  .rop.pc .rop-hn { grid-area: hn; }
+  .rop.pc .rop-hi { grid-area: hi; }
+  .rop.pc .rop-hv { grid-area: hv; }
+  .rop.pc .rop-hname { flex-basis: 100%; }
+  .rop.pc .rop-hi > :last-child { grid-column: 1 / -1; }
+  .rop.pc .rop-port { min-height: 96px; }
+  .rop.pc .rop-side,
+  .rop.pc .rop-main {
+    min-height: auto;
+    overflow: visible;
+    padding-right: 0;
+  }
+  .rop.pc .rop-sidew {
+    flex-direction: row;
+    width: 100%;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  .rop.pc .rop-sidew > section {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+  .rop.pc .rop-sidew .rop-abg {
+    grid-template-columns: minmax(0, 1fr) 30px auto;
+    column-gap: 4px;
+  }
+  .rop.pc .rop-sidew .rop-abil {
+    padding: 2px 4px 2px 6px;
+    min-height: 30px;
+    font-size: 15px;
+  }
+  .application.rop.pc .rop-sidew .rop-abv {
+    width: 30px;
+    font-size: 16px;
+  }
+  .rop.pc .rop-sidew .rop-cdr {
+    padding-left: 6px;
+    gap: 2px;
+  }
+  .rop.pc .rop-sidew .rop-cdr-name {
+    font-size: 13px;
+  }
+  .application.rop.pc .rop-sidew .rop-cdv {
+    width: 30px;
+  }
+  .application.rop.pc nav.rop-nav {
+    grid-area: nav;
+    position: static;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+    gap: 2px;
+    z-index: auto;
+  }
+  .application.rop.pc nav.rop-nav .rop-otab {
+    writing-mode: horizontal-tb;
+    width: auto;
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: 220px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 8px 2px 10px;
+    margin: 0;
+    border-left: none;
+    border-radius: 10px 10px 0 0;
+  }
+  .application.rop.pc nav.rop-nav .rop-otab.active {
+    margin-left: 0;
+  }
+}

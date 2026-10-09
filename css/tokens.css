@@ -1,0 +1,70 @@
+/* Fonts bundled with the system (SIL Open Font License, see fonts/OFL-*.txt). */
+@font-face {
+  font-family: "Alegreya Sans";
+  src: url("../fonts/AlegreyaSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Alegreya Sans";
+  src: url("../fonts/AlegreyaSans-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Alegreya Sans";
+  src: url("../fonts/AlegreyaSans-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Alegreya Sans";
+  src: url("../fonts/AlegreyaSans-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IM Fell English SC";
+  src: url("../fonts/IMFellEnglishSC-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Colors and fonts of the approved sheet design. */
+.rop {
+  --rop-font-head: "IM Fell English SC", Georgia, serif;
+  --rop-font-body: "Alegreya Sans", system-ui, sans-serif;
+
+  --rop-bg: #F4EEE1;
+  --rop-ink: #2B2522;
+  --rop-ink-2: #5E554C;
+  --rop-accent: #8A2A1F;
+  --rop-accent-hover: #F3E3DF;
+
+  --rop-input-bg: #FFFDF8;
+  --rop-input-bd: #A89A83;
+  --rop-btn-bd: #8C7B66;
+  --rop-card-bd: #CFC3AE;
+  --rop-line: #E2D8C6;
+
+  --rop-auto-bg: #E6EEEC;
+  --rop-auto-bd: #1D5C61;
+  --rop-auto-ink: #16484C;
+  --rop-focus: #1D5C61;
+
+  --rop-tab: #EDE3CC;
+  --rop-bar: #2B2522;
+  --rop-bar-ink: #F4EEE1;
+  --rop-port: #191813;
+  --rop-port-line: #4b4a44;
+  --rop-gold: #9f9275;
+
+  --rop-hp: #B86A5F;
+  --rop-ar: #5E8F92;
+  --rop-shadow: rgba(43, 37, 34, .35);
+}

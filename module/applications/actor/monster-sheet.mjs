@@ -9,7 +9,7 @@ const TextEditor = foundry.applications.ux.TextEditor.implementation;
 export default class MonsterSheet extends BaseActorSheet {
   /** @override */
   static DEFAULT_OPTIONS = {
-    classes: ["monster"],
+    classes: ["rop", "actor", "monster"],
     position: { width: 560, height: 680 },
     actions: {
       addAttack: MonsterSheet.#addAttack,

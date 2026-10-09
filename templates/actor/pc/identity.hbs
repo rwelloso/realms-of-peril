@@ -1,0 +1,57 @@
+<header class="rop-ident">
+  <div class="rop-hn">
+    <label class="rop-field rop-hname">
+      <span class="rop-lbl">{{localize "ROP.SHEET.Name"}}</span>
+      <input class="rop-inp rop-h" type="text" name="name" value="{{actor.name}}" />
+    </label>
+    <div class="rop-auto rop-level">
+      <span class="rop-lbl">{{localize "ROP.PC.FIELDS.level.label"}}</span>
+      <output class="rop-h">{{system.level}}</output>
+    </div>
+    <label class="rop-field rop-xp">
+      <span class="rop-lbl">{{localize "ROP.PC.FIELDS.xp.label"}}</span>
+      <input class="rop-inp" type="number" min="0" name="system.xp" value="{{system.xp}}" />
+    </label>
+  </div>
+  <div class="rop-hi">
+    <label class="rop-field">
+      <span class="rop-lbl">{{localize "ROP.PC.FIELDS.kin.label"}}</span>
+      <select class="rop-inp" name="system.kin">
+        <option value=""></option>
+        {{#each kinOptions as |option|}}
+        <option value="{{option.id}}" {{#if (eq option.id ../kin.id)}}selected{{/if}}>{{option.name}}</option>
+        {{/each}}
+      </select>
+    </label>
+    <label class="rop-field">
+      <span class="rop-lbl">{{localize "ROP.PC.FIELDS.background.label"}}</span>
+      <select class="rop-inp" name="system.background">
+        <option value=""></option>
+        {{#each backgroundOptions as |option|}}
+        <option value="{{option.id}}" {{#if (eq option.id ../background.id)}}selected{{/if}}>{{option.name}}</option>
+        {{/each}}
+      </select>
+    </label>
+    <div class="rop-field">
+      <span class="rop-lbl">{{localize "ROP.SHEET.ClassRanks"}}</span>
+      <output class="rop-auto rop-ranks">{{classSummary}}</output>
+    </div>
+  </div>
+  <div class="rop-hv">
+    <div class="rop-vb rop-vb-hp">
+      <span class="rop-h">{{localize "ROP.SHEET.HP"}}</span>
+      <input class="rop-inp rop-h rop-hp-cur" type="number" min="0" name="system.hp.value" value="{{system.hp.value}}"
+             aria-label="{{localize "ROP.HITPOINTS.FIELDS.value.label"}}" />
+      <span class="rop-slash">/</span>
+      <output class="rop-auto" aria-label="{{localize "ROP.HITPOINTS.FIELDS.max.label"}}">{{system.hp.max}}</output>
+    </div>
+    <div class="rop-vb rop-vb-ar">
+      <span class="rop-h">{{localize "ROP.SHEET.AR"}}</span>
+      <output class="rop-auto">{{system.ar}}</output>
+    </div>
+    <div class="rop-vb">
+      <span class="rop-h">{{localize "ROP.SHEET.Heavy"}}</span>
+      <output class="rop-auto">{{heavy.value}} / {{heavy.max}}</output>
+    </div>
+  </div>
+</header>
