@@ -9,6 +9,9 @@
     "verified": "14"
   },
   "esmodules": ["rop.mjs"],
+  "languages": [
+    { "lang": "en", "name": "English", "path": "lang/en.json" }
+  ],
   "styles": ["css/rop.css"],
   "documentTypes": {
     "ActiveEffect": {
