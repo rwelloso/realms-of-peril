@@ -1,0 +1,18 @@
+<section class="rop-conditions">
+  <h3>{{localize "ROP.Conditions"}}</h3>
+  <ul class="condition-list">
+    {{#each conditions as |condition|}}
+    <li data-condition-id="{{condition.id}}">
+      <label class="condition-toggle">
+        <input type="checkbox" data-action="toggleCondition" {{checked condition.active}} />
+        {{localize condition.label}}
+      </label>
+      {{#if condition.hasRating}}
+        {{#if condition.active}}
+        <input type="number" class="condition-rating" data-condition-rating min="1" value="{{condition.level}}" />
+        {{/if}}
+      {{/if}}
+    </li>
+    {{/each}}
+  </ul>
+</section>

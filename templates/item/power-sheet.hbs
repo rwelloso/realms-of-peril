@@ -1,0 +1,43 @@
+<form class="rop-item-sheet rop-power-sheet" autocomplete="off">
+
+  <header class="sheet-header">
+    <img class="profile-img" src="{{item.img}}" alt="{{item.name}}" />
+    <input type="text" name="name" value="{{item.name}}" class="item-name" />
+  </header>
+
+  <div class="form-group">
+    <label>{{localize "ROP.POWER.FIELDS.tradition.label"}}</label>
+    <select name="system.tradition">
+      {{selectOptions magicTraditions selected=system.tradition labelAttr="label" localize=true}}
+    </select>
+  </div>
+
+  {{#if isHoly}}
+  <div class="form-group">
+    <label>{{localize "ROP.POWER.FIELDS.deity.label"}}</label>
+    <select name="system.deity">
+      <option value="">—</option>
+      {{selectOptions deities selected=system.deity labelAttr="label" localize=true}}
+    </select>
+  </div>
+  <div class="form-group">
+    <label>
+      <input type="checkbox" name="system.alwaysAvailable" {{checked system.alwaysAvailable}} />
+      {{localize "ROP.POWER.FIELDS.alwaysAvailable.label"}}
+    </label>
+  </div>
+  {{/if}}
+
+  {{#if isSpirit}}
+  <div class="form-group">
+    <label>{{localize "ROP.POWER.FIELDS.terrainTags.label"}}</label>
+    <input type="text" data-terrain-tags value="{{terrainTagsText}}" />
+  </div>
+  {{/if}}
+
+  <section class="description">
+    <label>{{localize "ROP.POWER.FIELDS.description.label"}}</label>
+    <prose-mirror name="system.description" value="{{system.description}}" document-uuid="{{item.uuid}}">{{{enrichedDescription}}}</prose-mirror>
+  </section>
+
+</form>

@@ -1,0 +1,23 @@
+<section class="rop-inventory">
+  <h3>{{localize heading}}</h3>
+  {{#each groups as |items type|}}
+  <div class="inventory-group">
+    <header>
+      <span class="type-label">{{localize (concat "TYPES.Item." type)}}</span>
+      <a data-action="createItem" data-type="{{type}}">
+        <i class="fas fa-plus"></i> {{localize "ROP.SHEET.Add"}}
+      </a>
+    </header>
+    <ul>
+      {{#each items as |item|}}
+      <li data-item-id="{{item.id}}">
+        <a data-action="editItem" class="item-name">{{item.name}}</a>
+        <a data-action="deleteItem" class="item-delete"><i class="fas fa-trash"></i></a>
+      </li>
+      {{else}}
+      <li class="empty">—</li>
+      {{/each}}
+    </ul>
+  </div>
+  {{/each}}
+</section>

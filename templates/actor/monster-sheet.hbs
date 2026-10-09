@@ -1,0 +1,66 @@
+<form class="rop-monster-sheet" autocomplete="off">
+
+  <header class="sheet-header">
+    <img class="profile-img" src="{{actor.img}}" data-action="showPortraitArtwork" alt="{{actor.name}}" />
+    <input type="text" name="name" value="{{actor.name}}" class="actor-name" />
+  </header>
+
+  <section class="stats">
+    <div class="form-group">
+      <label>{{localize "ROP.MONSTER.FIELDS.hd.label"}}</label>
+      <input type="text" name="system.hd" value="{{system.hd}}" />
+    </div>
+    <div class="form-group">
+      <label>
+        <input type="checkbox" name="system.minion" {{checked system.minion}} />
+        {{localize "ROP.MONSTER.FIELDS.minion.label"}}
+      </label>
+    </div>
+    <div class="form-group">
+      <label>{{localize "ROP.MONSTER.FIELDS.armor.label"}}</label>
+      <input type="number" name="system.armor" value="{{system.armor}}" min="0" />
+    </div>
+    <div class="form-group">
+      <label>{{localize "ROP.MONSTER.FIELDS.morale.label"}}</label>
+      <input type="number" name="system.morale" value="{{system.morale}}" min="1" max="6" />
+    </div>
+    <div class="form-group">
+      <label>{{localize "ROP.HITPOINTS.FIELDS.value.label"}}</label>
+      <input type="number" name="system.hp.value" value="{{system.hp.value}}" />
+    </div>
+    <div class="form-group">
+      <label>{{localize "ROP.HITPOINTS.FIELDS.max.label"}}</label>
+      <input type="number" name="system.hp.max" value="{{system.hp.max}}" min="0" />
+    </div>
+    <div class="form-group">
+      <label>{{localize "ROP.MONSTER.FIELDS.parentGroup.label"}}</label>
+      <input type="text" name="system.parentGroup" value="{{system.parentGroup}}" />
+    </div>
+  </section>
+
+  <section class="description">
+    <label>{{localize "ROP.MONSTER.FIELDS.description.label"}}</label>
+    <prose-mirror name="system.description" value="{{system.description}}" document-uuid="{{actor.uuid}}">{{{enrichedDescription}}}</prose-mirror>
+  </section>
+
+  <section class="attacks">
+    <header>
+      <h3>{{localize "ROP.MONSTER.FIELDS.attacks.label"}}</h3>
+      <a data-action="addAttack"><i class="fas fa-plus"></i> {{localize "ROP.SHEET.Add"}}</a>
+    </header>
+    <ul>
+      {{#each system.attacks as |attack index|}}
+      <li data-index="{{index}}">
+        <input type="text" name="system.attacks.{{index}}.name" value="{{attack.name}}" />
+        <textarea name="system.attacks.{{index}}.description">{{attack.description}}</textarea>
+        <a data-action="deleteAttack"><i class="fas fa-trash"></i></a>
+      </li>
+      {{else}}
+      <li class="empty">—</li>
+      {{/each}}
+    </ul>
+  </section>
+
+  {{> "systems/rop/templates/actor/parts/conditions.hbs"}}
+
+</form>

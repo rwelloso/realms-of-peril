@@ -1,0 +1,61 @@
+<form class="rop-follower-sheet" autocomplete="off">
+
+  <header class="sheet-header">
+    <img class="profile-img" src="{{actor.img}}" data-action="showPortraitArtwork" alt="{{actor.name}}" />
+    <input type="text" name="name" value="{{actor.name}}" class="actor-name" />
+  </header>
+
+  <section class="stats">
+    <div class="form-group">
+      <label>{{localize "ROP.FOLLOWER.FIELDS.job.label"}}</label>
+      <input type="text" name="system.job" value="{{system.job}}" list="rop-hireling-jobs" />
+      <datalist id="rop-hireling-jobs">
+        {{#each hirelingJobs as |data key|}}
+        <option value="{{localize data.label}}"></option>
+        {{/each}}
+      </datalist>
+    </div>
+    <div class="form-group">
+      <label>{{localize "ROP.FOLLOWER.FIELDS.aptitude.label"}}</label>
+      <input type="number" name="system.aptitude" value="{{system.aptitude}}" />
+    </div>
+    <div class="form-group">
+      <label>{{localize "ROP.FOLLOWER.FIELDS.loyalty.label"}}</label>
+      <input type="number" name="system.loyalty" value="{{system.loyalty}}" />
+    </div>
+    <div class="form-group">
+      <label>{{localize "ROP.FOLLOWER.FIELDS.wage.label"}}</label>
+      <input type="number" name="system.wage" value="{{system.wage}}" min="0" />
+    </div>
+    <div class="form-group">
+      <label>{{localize "ROP.FOLLOWER.FIELDS.damage.label"}}</label>
+      <input type="text" name="system.damage" value="{{system.damage}}" />
+    </div>
+    <div class="form-group">
+      <label>{{localize "ROP.FOLLOWER.FIELDS.armor.label"}}</label>
+      <input type="number" name="system.armor" value="{{system.armor}}" min="0" />
+    </div>
+    <div class="form-group">
+      <label>{{localize "ROP.FOLLOWER.FIELDS.maxHeavy.label"}}</label>
+      <input type="number" name="system.maxHeavy" value="{{system.maxHeavy}}" min="0" />
+    </div>
+    <div class="form-group">
+      <label>{{localize "ROP.HITPOINTS.FIELDS.value.label"}}</label>
+      <input type="number" name="system.hp.value" value="{{system.hp.value}}" />
+    </div>
+    <div class="form-group">
+      <label>{{localize "ROP.HITPOINTS.FIELDS.max.label"}}</label>
+      <input type="number" name="system.hp.max" value="{{system.hp.max}}" min="0" />
+    </div>
+  </section>
+
+  <section class="notes">
+    <label>{{localize "ROP.FOLLOWER.FIELDS.notes.label"}}</label>
+    <prose-mirror name="system.notes" value="{{system.notes}}" document-uuid="{{actor.uuid}}">{{{enrichedNotes}}}</prose-mirror>
+  </section>
+
+  {{> "systems/rop/templates/actor/parts/inventory.hbs" heading="ROP.SHEET.Inventory" groups=inventory}}
+
+  {{> "systems/rop/templates/actor/parts/conditions.hbs"}}
+
+</form>

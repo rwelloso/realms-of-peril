@@ -1,0 +1,66 @@
+<form class="rop-item-sheet rop-weapon-sheet" autocomplete="off">
+
+  <header class="sheet-header">
+    <img class="profile-img" src="{{item.img}}" alt="{{item.name}}" />
+    <input type="text" name="name" value="{{item.name}}" class="item-name" />
+  </header>
+
+  {{> "systems/rop/templates/item/parts/carried-item.hbs"}}
+
+  <section class="damage">
+    <h3>{{localize "ROP.WEAPON.FIELDS.damage.label"}}</h3>
+    <div class="form-group">
+      <label>{{localize "ROP.WEAPON.FIELDS.damage.die.label"}}</label>
+      <select name="system.damage.die">
+        <option value=""></option>
+        {{#each damageDice as |entry|}}
+        <option value="{{entry.die}}" {{#if entry.selected}}selected{{/if}}>{{entry.die}}</option>
+        {{/each}}
+      </select>
+    </div>
+    <div class="form-group">
+      <label>{{localize "ROP.WEAPON.FIELDS.damage.type.label"}}</label>
+      <select name="system.damage.type">
+        <option value=""></option>
+        {{selectOptions damageTypes selected=system.damage.type labelAttr="label" localize=true}}
+      </select>
+    </div>
+  </section>
+
+  <div class="form-group">
+    <label>{{localize "ROP.WEAPON.FIELDS.range.label"}}</label>
+    <multi-checkbox name="system.range">
+      {{#each rangeChecks as |entry|}}
+      <option value="{{entry.key}}" {{#if entry.checked}}selected{{/if}}>{{localize entry.label}}</option>
+      {{/each}}
+    </multi-checkbox>
+  </div>
+
+  <div class="form-group">
+    <label>{{localize "ROP.WEAPON.FIELDS.handedness.label"}}</label>
+    <select name="system.handedness">
+      <option value=""></option>
+      {{selectOptions handedness selected=system.handedness labelAttr="label" localize=true}}
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label>{{localize "ROP.WEAPON.FIELDS.properties.label"}}</label>
+    <multi-checkbox name="system.properties">
+      {{#each itemProperties as |entry|}}
+      <option value="{{entry.key}}" {{#if entry.checked}}selected{{/if}}>{{localize entry.label}}</option>
+      {{/each}}
+    </multi-checkbox>
+  </div>
+
+  <div class="form-group">
+    <label>{{localize "ROP.WEAPON.FIELDS.armorBonus.label"}}</label>
+    <input type="number" name="system.armorBonus" value="{{system.armorBonus}}" />
+  </div>
+
+  <section class="description">
+    <label>{{localize "ROP.WEAPON.FIELDS.description.label"}}</label>
+    <prose-mirror name="system.description" value="{{system.description}}" document-uuid="{{item.uuid}}">{{{enrichedDescription}}}</prose-mirror>
+  </section>
+
+</form>

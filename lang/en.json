@@ -1,0 +1,255 @@
+{
+  "TYPES": {
+    "Actor": {
+      "pc": "Player Character",
+      "follower": "Follower",
+      "monster": "Monster"
+    },
+    "Item": {
+      "weapon": "Weapon",
+      "armor": "Armor",
+      "gear": "Gear",
+      "container": "Container",
+      "class": "Class",
+      "kin": "Kin",
+      "background": "Background",
+      "talent": "Talent",
+      "power": "Power"
+    },
+    "ActiveEffect": {
+      "condition": "Condition"
+    }
+  },
+  "ROP": {
+    "HitPoints": "Hit Points",
+    "Conditions": "Conditions",
+    "SHEET": {
+      "Add": "Add",
+      "Delete": "Delete",
+      "Inventory": "Inventory",
+      "Features": "Features",
+      "NewAttack": "New Attack",
+      "NewItem": "New {type}"
+    },
+    "Ability": {
+      "Agility": "Agility",
+      "Charisma": "Charisma",
+      "Intellect": "Intellect",
+      "Perception": "Perception",
+      "Strength": "Strength"
+    },
+    "Condition": {
+      "Blinded": "Blinded",
+      "Clumsy": "Clumsy",
+      "Dead": "Dead",
+      "Deafened": "Deafened",
+      "Diseased": "Diseased",
+      "Dying": "Dying",
+      "Encumbered": "Encumbered",
+      "Exhausted": "Exhausted",
+      "Hungry": "Hungry",
+      "Panicked": "Panicked",
+      "Poisoned": "Poisoned",
+      "SleepDeprived": "Sleep Deprived",
+      "Sleepy": "Sleepy",
+      "Starving": "Starving",
+      "Stranded": "Stranded",
+      "Stunned": "Stunned",
+      "Thirsty": "Thirsty",
+      "Unconscious": "Unconscious",
+      "Unsteady": "Unsteady",
+      "Upset": "Upset",
+      "Winded": "Winded",
+      "Wounded": "Wounded"
+    },
+    "ItemProperty": {
+      "Strong": "Strong",
+      "Agile": "Agile",
+      "Versatile": "Versatile",
+      "Aimed": "Aimed",
+      "Throw": "Throw",
+      "Offhand": "Offhand",
+      "Reload": "Reload",
+      "Conceal": "Conceal",
+      "Mounted": "Mounted",
+      "Reach": "Reach",
+      "Clumsy": "Clumsy",
+      "Flammable": "Flammable"
+    },
+    "MagicTradition": {
+      "Arcane": "Arcane",
+      "Holy": "Holy",
+      "Spirit": "Spirit"
+    },
+    "EquipSlot": {
+      "Armor": "Armor",
+      "Head": "Head",
+      "Back": "Back",
+      "Belt": "Belt",
+      "Feet": "Feet",
+      "Hands": "Hands",
+      "Clothes": "Clothes"
+    },
+    "DamageType": {
+      "Hack": "Hack",
+      "Slash": "Slash",
+      "Bash": "Bash",
+      "Pierce": "Pierce",
+      "Pummel": "Pummel"
+    },
+    "WeaponRange": {
+      "Close": "Close",
+      "Near": "Near",
+      "Far": "Far",
+      "Distant": "Distant"
+    },
+    "Handedness": {
+      "OneHanded": "One-Handed",
+      "TwoHanded": "Two-Handed"
+    },
+    "HirelingJob": {
+      "Acolyte": "Acolyte",
+      "Adept": "Adept",
+      "Minstrel": "Minstrel",
+      "Rogue": "Rogue",
+      "Sage": "Sage",
+      "Servant": "Servant",
+      "Scout": "Scout",
+      "Warrior": "Warrior"
+    },
+    "PC": {
+      "FIELDS": {
+        "abilities": {
+          "label": "Abilities",
+          "fail": { "label": "Failure Box" }
+        },
+        "ar": { "label": "Armor Rating" },
+        "maxHeavy": { "label": "Max Heavy" },
+        "level": { "label": "Level" },
+        "xp": { "label": "XP" },
+        "kin": { "label": "Kin" },
+        "background": { "label": "Background" },
+        "pockets": { "label": "Pockets" }
+      }
+    },
+    "FOLLOWER": {
+      "FIELDS": {
+        "job": { "label": "Job" },
+        "aptitude": { "label": "Aptitude" },
+        "loyalty": { "label": "Loyalty" },
+        "wage": { "label": "Wage" },
+        "damage": { "label": "Damage" },
+        "armor": { "label": "Armor" },
+        "maxHeavy": { "label": "Max Heavy" },
+        "notes": { "label": "Special Features" }
+      }
+    },
+    "MONSTER": {
+      "FIELDS": {
+        "description": { "label": "Description" },
+        "hd": { "label": "Hit Dice" },
+        "minion": { "label": "Minion" },
+        "armor": { "label": "Armor" },
+        "morale": { "label": "Morale" },
+        "attacks": {
+          "label": "Attacks & Abilities",
+          "element": {
+            "name": { "label": "Name" },
+            "description": { "label": "Description" }
+          }
+        },
+        "parentGroup": { "label": "Parent Group" }
+      }
+    },
+    "HITPOINTS": {
+      "FIELDS": {
+        "value": { "label": "Current" },
+        "max": { "label": "Max" }
+      }
+    },
+    "CARRIEDITEM": {
+      "FIELDS": {
+        "price": { "label": "Price" },
+        "heavyCost": { "label": "Heavy Cost" },
+        "container": { "label": "Container" }
+      }
+    },
+    "RANKEDFEATURE": {
+      "FIELDS": {
+        "rank": { "label": "Rank" }
+      }
+    },
+    "WEAPON": {
+      "FIELDS": {
+        "damage": {
+          "label": "Damage",
+          "die": { "label": "Damage Die" },
+          "type": { "label": "Damage Type" }
+        },
+        "range": { "label": "Range" },
+        "handedness": { "label": "Handedness" },
+        "properties": { "label": "Properties" },
+        "armorBonus": { "label": "Armor Bonus" },
+        "description": { "label": "Description" }
+      }
+    },
+    "ARMOR": {
+      "FIELDS": {
+        "armorRating": { "label": "Armor Rating" },
+        "properties": { "label": "Properties" },
+        "equipSlot": { "label": "Equip Slot" },
+        "description": { "label": "Description" }
+      }
+    },
+    "GEAR": {
+      "FIELDS": {
+        "category": { "label": "Category" },
+        "supplyDie": { "label": "Supply Die" },
+        "equipSlot": { "label": "Equip Slot" },
+        "description": { "label": "Description" }
+      }
+    },
+    "CONTAINER": {
+      "FIELDS": {
+        "capacity": { "label": "Capacity" },
+        "price": { "label": "Price" },
+        "description": { "label": "Description" }
+      }
+    },
+    "CLASS": {
+      "FIELDS": {
+        "description": { "label": "Description" }
+      }
+    },
+    "KIN": {
+      "FIELDS": {
+        "description": { "label": "Description" }
+      }
+    },
+    "BACKGROUND": {
+      "FIELDS": {
+        "description": { "label": "Description" }
+      }
+    },
+    "TALENT": {
+      "FIELDS": {
+        "description": { "label": "Description" },
+        "source": { "label": "Source" }
+      }
+    },
+    "POWER": {
+      "FIELDS": {
+        "tradition": { "label": "Tradition" },
+        "description": { "label": "Description" },
+        "deity": { "label": "Deity" },
+        "alwaysAvailable": { "label": "Always Available" },
+        "terrainTags": { "label": "Terrain" }
+      }
+    },
+    "CONDITION": {
+      "FIELDS": {
+        "level": { "label": "Rating" }
+      }
+    }
+  }
+}

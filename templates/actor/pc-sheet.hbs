@@ -1,0 +1,80 @@
+<form class="rop-pc-sheet" autocomplete="off">
+
+  <header class="sheet-header">
+    <img class="profile-img" src="{{actor.img}}" data-action="showPortraitArtwork" alt="{{actor.name}}" />
+    <input type="text" name="name" value="{{actor.name}}" class="actor-name" />
+  </header>
+
+  <section class="abilities">
+    {{#each abilities as |ability|}}
+    <div class="ability">
+      <label>{{localize ability.label}}</label>
+      <input type="number" name="system.abilities.{{ability.key}}.value" value="{{ability.score}}" min="-3" max="6" />
+      <label class="fail">
+        <input type="checkbox" name="system.abilities.{{ability.key}}.fail" {{checked ability.fail}} />
+        {{localize "ROP.PC.FIELDS.abilities.fail.label"}}
+      </label>
+    </div>
+    {{/each}}
+  </section>
+
+  <section class="stats">
+    <div class="stat">
+      <label>{{localize "ROP.HITPOINTS.FIELDS.value.label"}}</label>
+      <input type="number" name="system.hp.value" value="{{system.hp.value}}" />
+    </div>
+    <div class="stat">
+      <label>{{localize "ROP.HITPOINTS.FIELDS.max.label"}}</label>
+      <output>{{system.hp.max}}</output>
+    </div>
+    <div class="stat">
+      <label>{{localize "ROP.PC.FIELDS.level.label"}}</label>
+      <output>{{system.level}}</output>
+    </div>
+    <div class="stat">
+      <label>{{localize "ROP.PC.FIELDS.xp.label"}}</label>
+      <input type="number" name="system.xp" value="{{system.xp}}" min="0" />
+    </div>
+    <div class="stat">
+      <label>{{localize "ROP.PC.FIELDS.ar.label"}}</label>
+      <output>{{system.ar}}</output>
+    </div>
+    <div class="stat">
+      <label>{{localize "ROP.PC.FIELDS.maxHeavy.label"}}</label>
+      <output>{{system.maxHeavy}}</output>
+    </div>
+  </section>
+
+  <section class="kin-background">
+    <div class="form-group">
+      <label>{{localize "ROP.PC.FIELDS.kin.label"}}</label>
+      <select name="system.kin">
+        <option value=""></option>
+        {{#each kinOptions as |option|}}
+        <option value="{{option.id}}" {{#if (eq option.id kin.id)}}selected{{/if}}>{{option.name}}</option>
+        {{/each}}
+      </select>
+    </div>
+    <div class="form-group">
+      <label>{{localize "ROP.PC.FIELDS.background.label"}}</label>
+      <select name="system.background">
+        <option value=""></option>
+        {{#each backgroundOptions as |option|}}
+        <option value="{{option.id}}" {{#if (eq option.id background.id)}}selected{{/if}}>{{option.name}}</option>
+        {{/each}}
+      </select>
+    </div>
+  </section>
+
+  <section class="pockets">
+    <label>{{localize "ROP.PC.FIELDS.pockets.label"}}</label>
+    <prose-mirror name="system.pockets" value="{{system.pockets}}" document-uuid="{{actor.uuid}}">{{{enrichedPockets}}}</prose-mirror>
+  </section>
+
+  {{> "systems/rop/templates/actor/parts/inventory.hbs" heading="ROP.SHEET.Inventory" groups=inventory}}
+
+  {{> "systems/rop/templates/actor/parts/inventory.hbs" heading="ROP.SHEET.Features" groups=features}}
+
+  {{> "systems/rop/templates/actor/parts/conditions.hbs"}}
+
+</form>

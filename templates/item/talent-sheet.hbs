@@ -1,0 +1,18 @@
+<form class="rop-item-sheet rop-talent-sheet" autocomplete="off">
+
+  <header class="sheet-header">
+    <img class="profile-img" src="{{item.img}}" alt="{{item.name}}" />
+    <input type="text" name="name" value="{{item.name}}" class="item-name" />
+  </header>
+
+  <div class="form-group">
+    <label>{{localize "ROP.TALENT.FIELDS.source.label"}}</label>
+    <input type="text" name="system.source" value="{{system.source}}" />
+  </div>
+
+  <section class="description">
+    <label>{{localize "ROP.TALENT.FIELDS.description.label"}}</label>
+    <prose-mirror name="system.description" value="{{system.description}}" document-uuid="{{item.uuid}}">{{{enrichedDescription}}}</prose-mirror>
+  </section>
+
+</form>

@@ -1,0 +1,39 @@
+{
+  "id": "rop",
+  "title": "Realms of Peril",
+  "description": "Unofficial Foundry VTT system for Realms of Peril.",
+  "authors": [ { "name": "daddy_bot", "email": "daddy_bot@arandu.games" } ],
+  "version": "0.1.0",
+  "compatibility": {
+    "minimum": "14.367",
+    "verified": "14"
+  },
+  "esmodules": ["rop.mjs"],
+  "styles": ["css/rop.css"],
+  "documentTypes": {
+    "ActiveEffect": {
+      "condition": {}
+    },
+    "Actor": {
+      "pc": {},
+      "follower": {},
+      "monster": {}
+    },
+    "Item": {
+      "weapon": {},
+      "armor": {},
+      "gear": {},
+      "container": {},
+      "class": {},
+      "kin": {},
+      "background": {},
+      "talent": {},
+      "power": {}
+    }
+  },
+  "primaryTokenAttribute": "hp",
+  "grid": {
+    "distance": 1.5,
+    "units": "m"
+  }
+}

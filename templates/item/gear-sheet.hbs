@@ -1,0 +1,38 @@
+<form class="rop-item-sheet rop-gear-sheet" autocomplete="off">
+
+  <header class="sheet-header">
+    <img class="profile-img" src="{{item.img}}" alt="{{item.name}}" />
+    <input type="text" name="name" value="{{item.name}}" class="item-name" />
+  </header>
+
+  {{> "systems/rop/templates/item/parts/carried-item.hbs"}}
+
+  <div class="form-group">
+    <label>{{localize "ROP.GEAR.FIELDS.category.label"}}</label>
+    <input type="text" name="system.category" value="{{system.category}}" />
+  </div>
+
+  <div class="form-group">
+    <label>{{localize "ROP.GEAR.FIELDS.supplyDie.label"}}</label>
+    <select name="system.supplyDie">
+      <option value="">—</option>
+      {{#each supplyDice as |entry|}}
+      <option value="{{entry.die}}" {{#if entry.selected}}selected{{/if}}>{{entry.die}}</option>
+      {{/each}}
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label>{{localize "ROP.GEAR.FIELDS.equipSlot.label"}}</label>
+    <select name="system.equipSlot">
+      <option value="">—</option>
+      {{selectOptions equipSlots selected=system.equipSlot labelAttr="label" localize=true}}
+    </select>
+  </div>
+
+  <section class="description">
+    <label>{{localize "ROP.GEAR.FIELDS.description.label"}}</label>
+    <prose-mirror name="system.description" value="{{system.description}}" document-uuid="{{item.uuid}}">{{{enrichedDescription}}}</prose-mirror>
+  </section>
+
+</form>
